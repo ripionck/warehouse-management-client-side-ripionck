@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-const useReservations = () => {
+const useReservations = (url) => {
     const [reservations, setReservations] = useState([]);
 
     useEffect(()=>{
-        fetch('https://aqueous-plains-79132.herokuapp.com/')
+        fetch(url)
         .then(res => res.json())
         .then(data => setReservations(data));
     },[]);
