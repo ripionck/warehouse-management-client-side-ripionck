@@ -7,7 +7,7 @@ const useReservations = (url) => {
         fetch(url)
         .then(res => res.json())
         .then(data => setReservations(data));
-    },[]);
+    },[url]);
 
     return[reservations, setReservations]
 };
