@@ -9,6 +9,8 @@ const UpdateInfo = () => {
 
         
         const updateInfo = useReservations(`https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`)
+        const quantity = updateInfo[0].quantity;
+        console.log(quantity)
         console.log(updateInfo[0])
     
         const [reload, setReload] = useState(true)
@@ -41,12 +43,13 @@ const UpdateInfo = () => {
         const handleRestock = (e) =>{
             e.preventDefault();
 
-           // const restock = e.target.number.value;
+          const restock = e.target.number.value;
+         console.log(restock)
 
         }
 
     return (
-        <div className="d-flex justify-content-center mt-3 bg-info">
+        <div className="d-flex justify-content-center mt-3">
              <div class="card" style={{width: "25rem"}}>
                <img style={{height: "20rem"}} src={updateInfo[0].picture} class="card-img-top" alt="..."/>
                <div class="card-body">
@@ -55,8 +58,8 @@ const UpdateInfo = () => {
                  <p class="card-text">{updateInfo[0].description}</p>
                     <button onClick={handleDelivered} class="btn btn-primary">Delivered </button> 
                     <form onSubmit={handleRestock}> 
-                        <input type="number" name="restock" placeholder="number" id="" />
-                        <input type="button" value="Restock" />
+                        
+                        <input type="submit" value="Restock" />
                     </form>
                </div>
              </div>

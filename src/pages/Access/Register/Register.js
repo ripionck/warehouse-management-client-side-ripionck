@@ -4,6 +4,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useNavigate } from 'react-router';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import './Register.css';
 
 const Register = () => {
 
@@ -34,7 +35,7 @@ const Register = () => {
     return (
         <div className="container w-50 mx-auto">
             <h2>Register</h2>
-            <form onSubmit={handleRegister}>
+            <form onSubmit={handleRegister} className="form">
                <input type="text" name="name" id="name" placeholder="Full Name"/>
                <input type="email" name="email" id="email" placeholder="Email" />
                <input type="password" name="password" id="password" placeholder="Password" />
