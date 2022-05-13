@@ -2,6 +2,7 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
@@ -41,6 +42,7 @@ const Register = () => {
                <input type="password" name="password" id="password" placeholder="Password" />
                <input type="submit" value="Register" />
             </form>
+            <p className="text-center">Already have an account?<Link to="/login" className='text-primary pe-auto text-decoration-none'>Please Login</Link></p>
             <SocialLogin></SocialLogin>
         </div>
     );

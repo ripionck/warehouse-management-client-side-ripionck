@@ -24,7 +24,6 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/register" element={<Register></Register>}></Route>
           <Route path="/inventories" element={<Inventories></Inventories>}></Route>
           <Route path="/mySelections" element={<MySelections></MySelections>}></Route>
           <Route path="/myItems/:updateId" element={<MyItems></MyItems>}></Route>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -46,6 +47,8 @@ const Login = () => {
                 Submit
               </Button>
             </Form>
+            <p className="text-center">Forgot password?<button className='text-danger pe-auto border-0' >Reset password</button></p>
+            <p className="text-center">Don't have an account? <Link to="/register" className='text-primary pe-auto text-decoration-none' >Create an account</Link></p>
             <SocialLogin></SocialLogin>
         </div>
     );
