@@ -7,15 +7,17 @@ import AddItem from './pages/AddItem/AddItem';
 import Blogs from './pages/Blogs/Blogs';
 import Home from './pages/Home/Home';
 import Inventories from './pages/Inventories/Inventories';
-import MyItems from './pages/MyItem/MyItem';
+import MyItems from './pages/DisplayMyItems/DisplayMyItems';
 import Footer from './pages/Shared/Footer/Footer';
 import Header from './pages/Shared/Header/Header';
 import UpdateInfo from './pages/UpdateInfo/UpdateInfo';
+import MySelections from './pages/MySelections/MySelections';
+
 
 
 
 function App() {
-  return (
+  return ( 
     <>
       <Header></Header>
       <Routes>
@@ -24,7 +26,8 @@ function App() {
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
           <Route path="/inventories" element={<Inventories></Inventories>}></Route>
-          <Route path="/myItem/:updateId" element={<MyItems></MyItems>}></Route>
+          <Route path="/mySelections" element={<MySelections></MySelections>}></Route>
+          <Route path="/myItems/:updateId" element={<MyItems></MyItems>}></Route>
           <Route path="/updateInfo/:updateId" element={<UpdateInfo></UpdateInfo>}></Route>
           <Route path="/addItem" element={<AddItem></AddItem>}></Route>
           <Route path="/blogs" element={<Blogs></Blogs>}></Route>

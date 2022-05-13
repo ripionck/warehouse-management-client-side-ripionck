@@ -6,7 +6,7 @@ import auth from '../../firebase.init';
 import useReservations from '../../hooks/useReservations';
 
 
-const MyItem = () => {
+const DisplayMyItems = () => {
     const {updateId} = useParams();
     //console.log(updateId)
     const item = useReservations(`https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`)
@@ -23,7 +23,7 @@ const MyItem = () => {
             address: e.target.address.value,
             phone: e.target.phone.value 
         }
-        axios.post('https://aqueous-plains-79132.herokuapp.com/myItem',itemInfo)
+        axios.post('https://aqueous-plains-79132.herokuapp.com/myItems',itemInfo)
         .then(res =>{
             const {data} = res;
             if(data.insertedId){
@@ -54,4 +54,4 @@ const MyItem = () => {
     );
 };
 
-export default MyItem;
+export default DisplayMyItems;

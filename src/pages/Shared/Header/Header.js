@@ -20,7 +20,7 @@ const Header = () => {
                    <form className="d-flex align-items-center">
                        <CustomLink className="mt-1 me-4 fs-5" style={{fontFamily: 'Rockwell'}} to="/">Home</CustomLink>
                        <CustomLink className="mt-1 me-4 fs-5" style={{fontFamily: 'Rockwell'}} to="/inventories">Inventories</CustomLink>
-                       {user && <CustomLink className=" text-dark mt-1 me-4 fs-5" style={{fontFamily: 'Rockwell'}} to="/myItems">My Items</CustomLink>} 
+                       {user && <CustomLink className=" text-dark mt-1 me-4 fs-5" style={{fontFamily: 'Rockwell'}} to="/mySelections">My Selections</CustomLink>} 
                        <CustomLink className="mt-1 me-4  fs-5" style={{fontFamily: 'Rockwell'}} to="/blogs">Blogs</CustomLink>
                        <CustomLink className="mt-1 me-4  fs-5" style={{fontFamily: 'Rockwell'}} to="/register">Register</CustomLink>
                        {user? <div className="d-flex align-items-center"><button className="btn btn-link  fs-5" onClick={()=>signOut(auth)} style={{fontFamily: 'Rockwell'}}>LogOut</button><Link to="/" className="navbar-brand"><img src={userImg} alt="" /></Link></div>  :
