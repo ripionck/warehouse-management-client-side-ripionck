@@ -1,0 +1,12 @@
+.login-btn:hover{
+    border: none;
+    border-radius: 20px;
+    padding: 0 18px;
+    background-color: rgb(154, 154, 223);
+}
+.logout-btn:hover{
+    border: none;
+    border-radius: 20px;
+    padding: 0 18px;
+    background-color: rgb(154, 154, 223);
+}

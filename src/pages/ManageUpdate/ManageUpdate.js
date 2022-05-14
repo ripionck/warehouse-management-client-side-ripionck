@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useParams } from 'react-router';
 
 const ManageUpdate = ({singleItem}) => {
+     const {updateId} = useParams();
+     //console.log(updateId)
       const {book_name, quantity,picture} = singleItem;
       const [itemQuantity, setItemQuantity] = useState(quantity);
     // delivery handler
@@ -11,8 +14,8 @@ const ManageUpdate = ({singleItem}) => {
         }else if(itemQuantity > 0) {
             setItemQuantity(itemQuantity - 1);
         }
-/* 
-         const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`
+
+         const url = `https://aqueous-plains-79132.herokuapp.com/updateInfo/${updateId}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -24,7 +27,7 @@ const ManageUpdate = ({singleItem}) => {
         .then(data=>{
             console.log('data are here',data);
            // alert('quantity-upload')
-        })   */
+        })  
     }
 
     //restock handler

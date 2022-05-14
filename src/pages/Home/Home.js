@@ -15,16 +15,17 @@ const Home = () => {
           reservationsData[0].length=6;
       }
     return (
-        <div className="container">
+        <div>
             <Banner></Banner>
             <h2>total: {reservationsData[0].length}</h2>
-            <div className="row">
-              {
-               reservationsData[0]?.map(reservations=><Inventory key={reservations.id} reservations={reservations}></Inventory>)
-               }
+            <div className="container">
+              <div className="row">
+                {
+                  reservationsData[0]?.map(reservations=><Inventory key={reservations.id} reservations={reservations}></Inventory>)
+                }
+              </div>
+              <Link to="/inventories">Manage Inventories</Link>
             </div>
-            <Link to="/inventories">Manage Inventories</Link>
-
             <div className="container mt-5" style={{borderTop:"2px solid black"}}></div>
             <div className="container mt-5">
                 <div class="row">
