@@ -4,21 +4,20 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 
 const Register = () => {
-
     const [
         createUserWithEmailAndPassword,
         user,
-        loading,
-        error,
       ] = useCreateUserWithEmailAndPassword(auth);
 
-      const [updateProfile, updating, error1] = useUpdateProfile(auth);
+      const [updateProfile, ] = useUpdateProfile(auth);
+      const [token] = useToken(user);
       const navigate = useNavigate();
-      if(user){
+      if(token){
           navigate("/home")
       }
                                               
@@ -27,7 +26,7 @@ const Register = () => {
          const name = e.target.name.value;
          const email = e.target.email.value;
          const password = e.target.password.value;
-         console.log(email, password)
+        // console.log(email, password)
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({displayName:name}); 

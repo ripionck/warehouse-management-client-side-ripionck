@@ -4,35 +4,29 @@ import github from '../../../images/github.png';
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
-//import Loading from '../../Shared/Loading/Loading';
-//import useToken from '../../../hooks/useToken';
+import useToken from '../../../hooks/useToken';
+
+
 
 const SocialLogin = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-    const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
-    //const [token] = useToken(user || user1);
+    const [signInWithGoogle, user,  error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, user1, error1] = useSignInWithGithub(auth);
+    const [token] = useToken(user || user1);
     const navigate = useNavigate();
-    if(user){
-        navigate('/')
-    }
-    //const location = useLocation();
+    const location = useLocation();
 
-    //let from = location.state?.from?.pathname || "/";
+    let from = location.state?.from?.pathname || "/";
     
     let errorElement;
-
-    /* if(loading || loading1){
-        return <Loading></Loading>
-    } */
 
     if (error || error1) {
         errorElement = <p className='text-danger'>Error: {error?.message} {error1?.message}</p>
     }
 
-    /* if (token) {
+     if (token) {
         navigate(from, { replace: true });
     }
- */
+
     return (
         <div>
             <div className='d-flex align-items-center'>
