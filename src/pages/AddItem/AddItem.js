@@ -35,7 +35,7 @@ const AddItem = () => {
         <div className='w-50 mx-auto'>
             <h2>Please add a service</h2>
             <form className='d-flex flex-column addingForm'  onSubmit={handleSubmit(onSubmit)} >
-                <input className='mb-2 rounded p-2' placeholder='Book Name' {...Register("book_name", { required: true, maxLength: 20 })} />
+                <input className='mb-2 rounded p-2' placeholder='Book Name' type="text" {...Register("book_name")} />
                 <input className='mb-2 p-2' placeholder='URL' type="url" {...register("picture")} />
                 <input className='mb-2 p-2' placeholder='Value' type="number" {...register("value")} />
                 <input className='mb-2 p-2' placeholder='Quantity' type="number" {...register("quantity")} />

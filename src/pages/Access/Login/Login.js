@@ -1,7 +1,8 @@
+import axios from 'axios';
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Banner from '../../Banner/Banner';
@@ -9,6 +10,9 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
  
+  const navigate = useNavigate();
+  const location = useLocation();
+  
     const [
         signInWithEmailAndPassword,
         user,
@@ -16,12 +20,8 @@ const Login = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
       
+      let from = location.state?.from?.pathname || '/';
       
-     const navigate = useNavigate();
-     if(user){
-         navigate("/")
-     }
-
       const handleLogin = async e =>{
           e.preventDefault();
           const email = e.target.email.value;
@@ -30,6 +30,17 @@ const Login = () => {
 
           await signInWithEmailAndPassword(email, password);
       }
+
+      if(user){
+        const url = 'https://aqueous-plains-79132.herokuapp.com/login';
+        axios.post(url, {
+          email : user.email
+        }).then(data=>{
+          localStorage.setItem("accessToken", data.token);
+          navigate(from, {replace: true});
+        })
+      
+    }
 
     return (
         <div className="w-50 mx-auto">

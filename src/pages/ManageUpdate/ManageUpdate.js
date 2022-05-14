@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useParams } from 'react-router';
@@ -15,19 +16,10 @@ const ManageUpdate = ({singleItem}) => {
             setItemQuantity(itemQuantity - 1);
         }
 
-         const url = `https://aqueous-plains-79132.herokuapp.com/updateInfo/${updateId}`
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body:JSON.stringify(itemQuantity),
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log('data are here',data);
-           // alert('quantity-upload')
-        })  
+         const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`
+        axios.put(url,{
+            quantity: itemQuantity -1
+        }).then(res => console.log(res))
     }
 
     //restock handler
@@ -39,6 +31,10 @@ const ManageUpdate = ({singleItem}) => {
         } else{
             setItemQuantity(restock + itemQuantity)
         }
+        const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`
+        axios.put(url,{
+            quantity: itemQuantity + restock
+        }).then(res => console.log(res))
 
     }
     return (
@@ -51,7 +47,7 @@ const ManageUpdate = ({singleItem}) => {
             <p class="card-text"></p>
                <button onClick={handleDelivered} class="btn btn-primary">Delivered </button> 
                <Form onSubmit={restockHandler}> 
-                   <Form.Group className="mb-3" controlId="restock">
+                   <Form.Group className="mt-3" controlId="restock">
                        <Form.Control type="number" placeholder="Enter Number"></Form.Control>
                        <Button type="submit">Restock</Button>
                    </Form.Group>

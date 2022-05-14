@@ -13,6 +13,7 @@ import Header from './pages/Shared/Header/Header';
 import UpdateInfo from './pages/UpdateInfo/UpdateInfo';
 import MySelections from './pages/MySelections/MySelections';
 import ResetPass from './pages/Access/ResetPass/ResetPass';
+import RequiredAuth from './pages/Access/RequiredAuth/RequiredAuth';
 
 
 
@@ -29,9 +30,18 @@ function App() {
           <Route path="/register" element={<Register></Register>}></Route>
           <Route path="/inventories" element={<Inventories></Inventories>}></Route>
           <Route path="/mySelections" element={<MySelections></MySelections>}></Route>
-          <Route path="/myItems/:updateId" element={<MyItems></MyItems>}></Route>
-          <Route path="/updateInfo/:updateId" element={<UpdateInfo></UpdateInfo>}></Route>
-          <Route path="/addItem" element={<AddItem></AddItem>}></Route>
+          <Route path="/myItems/:updateId" element={
+              <RequiredAuth>
+                  <MyItems></MyItems>
+              </RequiredAuth>}></Route>
+          <Route path="/updateInfo/:updateId" element={
+              <RequiredAuth>
+                 <UpdateInfo></UpdateInfo>
+              </RequiredAuth>}></Route>
+          <Route path="/addItem" element={
+             <RequiredAuth>
+                <AddItem></AddItem>
+             </RequiredAuth>}></Route>
           <Route path="/blogs" element={<Blogs></Blogs>}></Route>
       </Routes>
       <Footer></Footer>
