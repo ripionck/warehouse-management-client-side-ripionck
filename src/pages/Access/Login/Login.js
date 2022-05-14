@@ -4,16 +4,18 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Banner from '../../Banner/Banner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
-
+ 
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
+      
       
      const navigate = useNavigate();
      if(user){
@@ -31,23 +33,20 @@ const Login = () => {
 
     return (
         <div className="w-50 mx-auto">
-            <h2>Login</h2>
+            <Banner></Banner>
             <Form onSubmit={handleLogin}>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
                 <Form.Control type="email"  name="email" placeholder="Enter email" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Control type="password" name="password" placeholder="Password" />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-              </Form.Group>
-              <Button className="w-50 mx-auto" variant="primary" type="submit">
-                Submit
-              </Button>
             </Form>
-            <p className="text-center">Forgot password?<button className='text-danger pe-auto border-0' >Reset password</button></p>
+            <div className="d-flex justify-content-center mb-3">
+                <Button className="w-50 mx-auto" type="submit" variant="primary">Login</Button>
+            </div>
+            <p className="text-center">Forgot password?<Link to="/resetPass" className='text-danger text-decoration-none ms-1' >Reset password</Link></p>
             <p className="text-center">Don't have an account? <Link to="/register" className='text-primary pe-auto text-decoration-none' >Create an account</Link></p>
             <SocialLogin></SocialLogin>
         </div>

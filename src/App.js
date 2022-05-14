@@ -12,6 +12,7 @@ import Footer from './pages/Shared/Footer/Footer';
 import Header from './pages/Shared/Header/Header';
 import UpdateInfo from './pages/UpdateInfo/UpdateInfo';
 import MySelections from './pages/MySelections/MySelections';
+import ResetPass from './pages/Access/ResetPass/ResetPass';
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/resetPass" element={<ResetPass></ResetPass>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
           <Route path="/inventories" element={<Inventories></Inventories>}></Route>
           <Route path="/mySelections" element={<MySelections></MySelections>}></Route>

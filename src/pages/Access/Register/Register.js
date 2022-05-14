@@ -35,12 +35,12 @@ const Register = () => {
 
     return (
         <div className="container w-50 mx-auto">
-            <h2>Register</h2>
+            <h5 className="text-center fw-bold mt-4">CREATE ACCOUNT</h5>
             <form onSubmit={handleRegister} className="form">
                <input type="text" name="name" id="name" placeholder="Full Name"/>
                <input type="email" name="email" id="email" placeholder="Email" />
                <input type="password" name="password" id="password" placeholder="Password" />
-               <input type="submit" value="Register" />
+               <input className="bg-primary text-white" type="submit" value="Register" />
             </form>
             <p className="text-center">Already have an account?<Link to="/login" className='text-primary pe-auto text-decoration-none'>Please Login</Link></p>
             <SocialLogin></SocialLogin>
