@@ -7,13 +7,13 @@ const Inventory = ({reservations}) => {
     //console.log(reservations)
 
     return (
-        <div className='col-lg-4 gy-4'>
+        <div className='col-lg-4 col-md-6 gy-4'>
         <div className="card shadow-sm p-3 mb-5 bg-body rounded">
             <div className="card-body">
-                <img src={picture} alt="" />
-                <h5 className="card-title">{book_name}</h5>
-                <h5 className="card-title">by: {author_name}</h5>
-                <h5 className="card-title">{edition}</h5>
+                <img className="img-fluid" src={picture} alt="" />
+                <h4 className="card-title mt-2" style={{fontFamily: "Rockwell"}}>{book_name}</h4>
+                <h5 className="card-title">by <i>{author_name}</i></h5>
+                <p className="card-title text-primary">{edition}</p>
                 <h6 className="card-subtitle mb-2 text-muted">Price: {value}</h6>
                 <p className='card-text'>Quantity: {quantity}</p>
                 <p className='card-text'>{description}</p>

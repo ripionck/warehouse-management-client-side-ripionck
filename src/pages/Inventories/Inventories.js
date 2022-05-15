@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import useReservations from '../../hooks/useReservations';
+import './Inventories.css';
 
 const Inventories = () => {
 
@@ -37,9 +38,9 @@ const Inventories = () => {
                            <h6 className="fw-bold">{inventories.book_name}</h6>
                            <span>by <span style={{fontStyle:"italic"}}>{inventories.author_name}</span></span>
                            <br />
-                           <span>price: {inventories.quantity}</span>
+                           <span>Quantity: {inventories.quantity}</span>
                            <br />
-                           <span>price: {inventories.value}</span>
+                           <span>Price: {inventories.value}</span>
                        </div>
                    </div>
                     <div className="mt-4" style={{marginLeft:"15rem"}}>
@@ -48,7 +49,9 @@ const Inventories = () => {
                     </div>
                 </div>)
             }
-            <Link to={'/addItems'} className="card-link">Add Item</Link>
+            <div className="d-flex justify-content-center mt-4 mb-3 add-link">
+                <Link to={'/addItems'}  style={{fontFamily: "Rockwell"}}>Add Item</Link>
+            </div>
         </div>
     );
 };

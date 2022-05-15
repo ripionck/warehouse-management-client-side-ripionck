@@ -1,0 +1,11 @@
+.delete-btn:hover{
+    border: 0;
+    border-radius: 20px;
+    background-color: rgb(231, 143, 140);
+}
+
+.add-link:hover{
+    border: 0;
+    border-radius: 20px;
+    background-color: rgb(203, 240, 203);
+}
