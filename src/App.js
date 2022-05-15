@@ -15,6 +15,7 @@ import MySelections from './pages/MySelections/MySelections';
 import ResetPass from './pages/Access/ResetPass/ResetPass';
 import RequiredAuth from './pages/Access/RequiredAuth/RequiredAuth';
 import { ToastContainer } from 'react-toastify';
+import AddItems from './pages/AddItems/AddItems';
 
 
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/register" element={<Register></Register>}></Route>
           <Route path="/inventories" element={<Inventories></Inventories>}></Route>
           <Route path="/mySelections" element={<MySelections></MySelections>}></Route>
+          <Route path="/addItems" element={<AddItems></AddItems>}></Route>
           <Route path="/myItems/:updateId" element={
               <RequiredAuth>
                   <MyItems></MyItems>

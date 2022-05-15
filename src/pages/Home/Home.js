@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <h2>total: {reservationsData[0].length}</h2>
+            <h2 className="text-center mt-4" style={{fontFamily: "Rockwell"}}>Inventory Items</h2>
             <div className="container">
               <div className="row">
                 {

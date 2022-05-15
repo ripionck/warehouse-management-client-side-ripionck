@@ -37,7 +37,7 @@ const Inventories = () => {
                            <h6 className="fw-bold">{inventories.book_name}</h6>
                            <span>by <span style={{fontStyle:"italic"}}>{inventories.author_name}</span></span>
                            <br />
-                           <span style={{fontStyle:"italic"}}>{inventories.edition}</span>
+                           <span>price: {inventories.quantity}</span>
                            <br />
                            <span>price: {inventories.value}</span>
                        </div>
@@ -51,7 +51,7 @@ const Inventories = () => {
                     </div>
                 </div>)
             }
-            <Link to={'/addItem'} className="card-link">Add Item</Link>
+            <Link to={'/addItems'} className="card-link">Add Item</Link>
         </div>
     );
 };
