@@ -4,7 +4,6 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import useToken from '../../../hooks/useToken';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 
@@ -15,9 +14,8 @@ const Register = () => {
       ] = useCreateUserWithEmailAndPassword(auth);
 
       const [updateProfile, ] = useUpdateProfile(auth);
-      const [token] = useToken(user);
       const navigate = useNavigate();
-      if(token){
+      if(user){
           navigate("/home")
       }
                                               

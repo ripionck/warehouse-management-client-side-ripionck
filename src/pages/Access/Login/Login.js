@@ -5,7 +5,6 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import useToken from '../../../hooks/useToken';
 import Banner from '../../Banner/Banner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -20,19 +19,20 @@ const Login = () => {
         user,
         error
       ] = useSignInWithEmailAndPassword(auth);
-      const [token] = useToken(user);
-      if(token){
+
+      if(user){
         navigate(from, {replace: true});
       }
 
       if (error){
            errorElement = <p className="text-danger">Error: {error?.message}</p>
       }
+
       const handleLogin = async e =>{
           e.preventDefault();
           const email = e.target.email.value;
           const password = e.target.password.value;
-          console.log(email, password)
+         // console.log(email, password)
 
           await signInWithEmailAndPassword(email, password);
       }
