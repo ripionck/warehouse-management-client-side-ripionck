@@ -23,7 +23,7 @@ const Header = () => {
                  <Nav className="me-auto">
                    <CustomLink className="text-decoration-none ms-4 fs-5" to="/">Home</CustomLink>
                    <CustomLink className="text-decoration-none ms-4 fs-5"  to="/inventories">Manage Items</CustomLink>
-                   {user && <CustomLink className="text-decoration-none ms-4 fs-5"  to="/mySelections">My Selections</CustomLink>}
+                   {user && <CustomLink className="text-decoration-none ms-4 fs-5"  to="/myItems">My Items</CustomLink>}
                    <CustomLink className="text-decoration-none ms-4 fs-5" to="/blogs">Blogs</CustomLink>
                  </Nav>
                  <Nav>
