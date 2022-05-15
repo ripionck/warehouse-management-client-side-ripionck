@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router';
@@ -9,7 +9,8 @@ import Banner from '../../Banner/Banner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
- 
+  const [email, setEmail] = useState({ value: "", error: "" });
+  const [password, setPassword] = useState({ value: "", error: "" });
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || '/';
@@ -19,36 +20,66 @@ const Login = () => {
         user,
         error
       ] = useSignInWithEmailAndPassword(auth);
+       
+      const handleEmailChange = e =>{
+        const email = e.target.value;
+        const emailRegex = /^\S+@\S+\.\S+$/;
+        const validEmail = emailRegex.test(email);
+      
+        if(validEmail){
+           setEmail({value: email, error: ""});
+       }else{
+           setEmail({value:"", error:"Please enter a valid Email"});
+       }
+    };
 
-      if(user){
-        navigate(from, {replace: true});
-      }
-
-      if (error){
-           errorElement = <p className="text-danger">Error: {error?.message}</p>
-      }
-
+    const handlePasswordChange = e => {
+      const password = e.target.value;
+      const passRegex = /.{6,}/;
+      const validPass = passRegex.test(password);
+  
+      if(password.length < 6){
+        setPassword({value: "", error: "Password too short"});
+    }else if(!validPass){
+        setPassword({value: "", error: "Minimum 6 characters"});
+    }else{
+        setPassword({value: password, error: ""});
+    }
+    };
+  
+     
       const handleLogin = async e =>{
           e.preventDefault();
-          const email = e.target.email.value;
-          const password = e.target.password.value;
-         // console.log(email, password)
-
-          await signInWithEmailAndPassword(email, password);
-      }
-
+          if (email.value === "") {
+            setEmail({ value: "", error: "Email is required" });
+          }
+      
+          if (password.value === "") {
+            setPassword({ value: "", error: "Password is required" });
+          }
+          await signInWithEmailAndPassword(email.value, password.value);
+      };
+      
+      useEffect(()=>{
+        if(user){
+          navigate(from, {replace: true});
+        }
+  
+      },[user])
 
     return (
         <div className="w-50 mx-auto">
             <Banner></Banner>
             <Form onSubmit={handleLogin}>
               <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
-                <Form.Control type="email"  name="email" placeholder="Enter email" />
+                <Form.Control onBlur={handleEmailChange} type="email"  name="email" placeholder="Enter email" />
               </Form.Group>
-
+              {email.error && (<p className='error'>{email.error}</p>)}
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control type="password" name="password" placeholder="Password" />
+                <Form.Control onBlur={handlePasswordChange} type="password" name="password" placeholder="Password" />
               </Form.Group>
+              {password.error && (
+              <p className='error'> {password.error}</p>)}
                <div className="d-flex justify-content-center mb-3">
                  <Button className="w-50 mx-auto" type="submit" variant="primary">Login</Button>
             </div>

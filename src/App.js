@@ -14,6 +14,7 @@ import UpdateInfo from './pages/UpdateInfo/UpdateInfo';
 import MySelections from './pages/MySelections/MySelections';
 import ResetPass from './pages/Access/ResetPass/ResetPass';
 import RequiredAuth from './pages/Access/RequiredAuth/RequiredAuth';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -45,6 +46,7 @@ function App() {
           <Route path="/blogs" element={<Blogs></Blogs>}></Route>
       </Routes>
       <Footer></Footer>
+      <ToastContainer></ToastContainer>
     </>
   );
 }

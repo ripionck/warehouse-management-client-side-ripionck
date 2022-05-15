@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import google from '../../../images/google.png';
 import github from '../../../images/github.png';
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -9,8 +9,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const SocialLogin = () => {
-    const [signInWithGoogle, user,  error] = useSignInWithGoogle(auth);
-    const [signInWithGithub, user1, error1] = useSignInWithGithub(auth);
+    const [signInWithGoogle, googleUser,  googleError] = useSignInWithGoogle(auth);
+    const [signInWithGithub, githubUser, githubError] = useSignInWithGithub(auth);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -19,13 +19,12 @@ const SocialLogin = () => {
     
     let errorElement;
 
-    if (error || error1) {
-        errorElement = <p className='text-danger'>Error: {error?.message} {error1?.message}</p>
-    }
-
-     if (user || user1) {
-        navigate(from, { replace: true });
-    }
+    useEffect(()=>{
+        const user = googleUser || githubUser;
+        if(user){
+            navigate(from);
+        }
+    },[googleUser, githubUser]);
 
     return (
         <div>
