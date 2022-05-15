@@ -16,8 +16,8 @@ const Inventory = ({reservations}) => {
                 <h5 className="card-title">{edition}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">Price: {value}</h6>
                 <p className='card-text'>Quantity: {quantity}</p>
-                <p className='card-text'>Quantity: {description}</p>
-                <Link to={`/updateInfo/${_id}`} className="card-link">Update Info</Link>
+                <p className='card-text'>{description}</p>
+                <Link to={`/updateInfo/${_id}`} className="card-link" style={{fontFamily: "Rockwell"}}>Update Info</Link>
             </div>
         </div>
     </div>

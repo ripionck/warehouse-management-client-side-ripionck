@@ -8,6 +8,7 @@ import Home from './pages/Home/Home';
 import Inventories from './pages/Inventories/Inventories';
 import MyItems from './pages/MyItems/MyItems';
 import Footer from './pages/Shared/Footer/Footer';
+import NotFound from './pages/Shared/NotFound/NotFound';
 import Header from './pages/Shared/Header/Header';
 import UpdateInfo from './pages/UpdateInfo/UpdateInfo';
 import ResetPass from './pages/Access/ResetPass/ResetPass';
@@ -43,6 +44,7 @@ function App() {
                 <AddItems></AddItems>
              </RequiredAuth>}></Route>
           <Route path="/blogs" element={<Blogs></Blogs>}></Route>
+          <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer></ToastContainer>
