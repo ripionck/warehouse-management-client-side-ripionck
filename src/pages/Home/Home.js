@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import useReservations from '../../hooks/useReservations';
 import Banner from '../Banner/Banner';
 import Inventory from '../Inventory/Inventory';
 import img1 from '../../images/perspectives.jpg'
@@ -9,28 +8,42 @@ import img3 from '../../images/profiles.jpg';
 import Kirkus_Review from '../../images/Kirkus_Review.jpg';
 import star from '../../images/star.png';
 import prize from '../../images/prize.png';
+ import axios from 'axios';
+import * as ReactBootStrap from 'react-bootstrap'; 
 
 const Home = () => {
+     const [reservationsData, setReservationsData] = useState(null);
+    const [loading, setLoading] = useState(false);
+   
 
-    const reservationsData = useReservations('http://localhost:4000/inventoryItems');
 
-    if(reservationsData[0].length){
-          reservationsData[0].length=6;
-      }
+    useEffect(()=>{
+        setLoading(true);
+       axios.get('http://localhost:4000/inventoryItems')
+       .then(res => setReservationsData(res.data))
+
+       setTimeout(()=>{
+           setLoading(false)
+       },5000)
+    },[]); 
+
     return (
         <div>
             <Banner></Banner>
             <h2 className="text-center mt-4" style={{fontFamily: "Rockwell"}}>Inventory Items</h2>
-            <div className="container">
+            {
+                loading ? <ReactBootStrap.Spinner className="d-block mx-auto my-3" style={{color: "yellow"}} animation = "border"/> : 
+                <div className="container">
               <div className="row">
                 {
-                  reservationsData[0]?.map(reservations=><Inventory key={reservations.id} reservations={reservations}></Inventory>)
+                  reservationsData?.slice(0, 6).map(reservations=><Inventory key={reservations.id} reservations={reservations}></Inventory>)
                 }
               </div>
               <span className="d-flex justify-content-center bg-primary py-1">
               <Link to="/inventories" className="text-white text-decoration-none" style={{fontFamily: "Rockwell"}}>Manage Inventories</Link>
               </span>
             </div>
+            }
             <div className="container mt-5" style={{borderTop:"2px solid black"}}></div>
             <div className="container mt-5">
                 <div className="row">

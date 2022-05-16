@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Inventory = ({reservations}) => {
-
+    
     const {_id, picture, book_name,value, quantity, author_name, edition, description} = reservations;
     //console.log(reservations)
 
