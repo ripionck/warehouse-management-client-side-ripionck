@@ -17,8 +17,6 @@ const SocialLogin = () => {
     const location = useLocation();
 
     let from = location.state?.from?.pathname || "/";
-    
-    let errorElement;
 
     if(token) {
         navigate(from, {replace: true});
@@ -31,7 +29,6 @@ const SocialLogin = () => {
                 <p className='mt-2 px-2'>or</p>
                 <div style={{ height: '1px' }} className='bg-primary w-50'></div>
             </div>
-            {errorElement}
             <div className=''>
                 <button
                     onClick={() => signInWithGoogle()}

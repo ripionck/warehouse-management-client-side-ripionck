@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
-import Banner from '../../Banner/Banner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 
@@ -31,6 +30,7 @@ const Login = () => {
        }else{
            setEmail({value:"", error:"Please enter a valid Email"});
        }
+      
     };
 
     const handlePasswordChange = e => {
@@ -58,6 +58,7 @@ const Login = () => {
             setPassword({ value: "", error: "Password is required" });
           }
           await signInWithEmailAndPassword(email.value, password.value);
+          e.target.reset();
       };
       
         if(token){

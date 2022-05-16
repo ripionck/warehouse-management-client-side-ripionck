@@ -56,6 +56,7 @@ const Register = () => {
         }
 
         await createUserWithEmailAndPassword(email.value, password.value);
+        e.target.reset();
      }
 
      const navigate = useNavigate();
