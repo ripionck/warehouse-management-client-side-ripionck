@@ -22,7 +22,7 @@ const ResetPass = () => {
             <form onSubmit={handleResetPassword} className="d-flex flex-column mb-2">
                 <label className="fw-bold" htmlFor="email">Email Address</label>
                 <input  onChange={(e) => setEmail(e.target.value)} type="email" name="email" value={email} id="" placeholder="Enter Email" />
-                 <input className="mt-2 bg-primary border-0 py-1 rounded text-white" type="submit" value="Reset Password" />
+                 <input style={{fontFamily: "Rockwell"}} className="mt-2 bg-primary border-0 py-1 rounded text-white" type="submit" value="Reset Password" />
             </form>
             <Link className="d-flex justify-content-center" to="/login">Back to Login</Link>
         </div>

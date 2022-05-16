@@ -1,5 +1,4 @@
-
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router';
@@ -9,17 +8,16 @@ import useToken from '../../../hooks/useToken';
 import Banner from '../../Banner/Banner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
+
 const Login = () => {
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || '/';
-  let errorElement;
     const [
         signInWithEmailAndPassword,
         user,
-        error
       ] = useSignInWithEmailAndPassword(auth);
       const [token] = useToken(user);
        
@@ -62,14 +60,13 @@ const Login = () => {
           await signInWithEmailAndPassword(email.value, password.value);
       };
       
-      
         if(token){
           navigate(from, {replace: true});
         }
 
     return (
         <div className="w-50 mx-auto">
-            <Banner></Banner>
+          <h3 className="text-center mt-5 mb-3" style={{fontFamily: "Rockwell"}}>LOGIN HERE</h3>
             <Form onSubmit={handleLogin}>
               <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
                 <Form.Control onBlur={handleEmailChange} type="email"  name="email" placeholder="Enter email" />
@@ -81,12 +78,11 @@ const Login = () => {
               {password.error && (
               <p className='error'> {password.error}</p>)}
                <div className="d-flex justify-content-center mb-3">
-                 <Button className="w-50 mx-auto" type="submit" variant="primary">Login</Button>
+                 <Button className="w-50 mx-auto" type="submit" variant="primary" style={{fontFamily: "Rockwell"}}>Login</Button>
             </div>
             </Form>
-            {errorElement}
-            <p className="text-center">Forgot password?<Link to="/resetPass" className='text-danger text-decoration-none ms-1' >Reset password</Link></p>
-            <p className="text-center">Don't have an account? <Link to="/register" className='text-primary pe-auto text-decoration-none' >Create an account</Link></p>
+            <p className="text-center">Forgot password?<Link to="/resetPass" className='text-danger text-decoration-none ms-1' style={{fontFamily: "Rockwell"}}>Reset password</Link></p>
+            <p className="text-center">Don't have an account? <Link to="/register" className='text-primary pe-auto text-decoration-none' style={{fontFamily: "Rockwell"}}>Create an account</Link></p>
             <SocialLogin></SocialLogin>
         </div>
     );

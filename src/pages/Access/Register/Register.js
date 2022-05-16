@@ -76,9 +76,9 @@ const Register = () => {
                {email.error && <p className="text-danger">{email.error}</p>}
                <input onBlur={handlePasswordChange} type="password" name="password" id="password" placeholder="Password" />
                {password.error && <p className="text-danger">{password.error}</p> }
-               <input className="bg-primary text-white" type="submit" value="Register" />
+               <input style={{fontFamily: "Rockwell"}} className="bg-primary text-white" type="submit" value="Register" />
             </form>
-            <p className="text-center">Already have an account?<Link to="/login" className='text-primary pe-auto text-decoration-none'>Please Login</Link></p>
+            <p className="text-center">Already have an account?<Link to="/login" className='text-primary pe-auto text-decoration-none ms-1' style={{fontFamily: "Rockwell"}}>Please Login</Link></p>
             <SocialLogin></SocialLogin>
         </div>
     );
