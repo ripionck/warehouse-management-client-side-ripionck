@@ -16,7 +16,7 @@ const ManageUpdate = ({singleItem}) => {
             setItemQuantity(itemQuantity - 1);
         }
 
-         const url = `http://localhost:4000/inventoryItems/${updateId}`
+         const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`
         axios.put(url,{
             quantity: itemQuantity -1
         }).then(res => console.log(res))
@@ -31,7 +31,7 @@ const ManageUpdate = ({singleItem}) => {
         } else{
             setItemQuantity(restock + itemQuantity)
         }
-        const url = `http://localhost:4000/inventoryItems/${updateId}`
+        const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`
         axios.put(url,{
             quantity: itemQuantity + restock
         }).then(res => console.log(res))

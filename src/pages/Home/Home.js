@@ -19,7 +19,7 @@ const Home = () => {
 
     useEffect(()=>{
         setLoading(true);
-       axios.get('http://localhost:4000/inventoryItems')
+       axios.get('https://aqueous-plains-79132.herokuapp.com/inventoryItems')
        .then(res => setReservationsData(res.data))
 
        setTimeout(()=>{

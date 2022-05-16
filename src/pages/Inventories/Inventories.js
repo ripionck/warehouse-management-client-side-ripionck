@@ -5,7 +5,7 @@ import './Inventories.css';
 
 const Inventories = () => {
 
-    const allInventories = useReservations('http://localhost:4000/inventoryItems')
+    const allInventories = useReservations('https://aqueous-plains-79132.herokuapp.com/inventoryItems')
     //console.log(allInventories)
     const [inventoryItems, setInventoryItems] = allInventories;
     //console.log(inventories)
@@ -13,7 +13,7 @@ const Inventories = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure to delete?');
         if(proceed){
-            const url = `http://localhost:4000/inventoryItems/${id}`;
+            const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems/${id}`;
             fetch(url, {
                 method: "DELETE"
             })
