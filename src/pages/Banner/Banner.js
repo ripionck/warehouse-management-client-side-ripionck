@@ -1,8 +1,8 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import img1 from '../../images/advertisement1.jpg';
-import img2 from '../../images/advertisement2.jpg';
-import img3 from '../../images/advertisement3.jpg';
+import img1 from '../../images/slide1.png';
+import img2 from '../../images/slide2.png';
+import img3 from '../../images/slide3.png';
 
 
 const Banner = () => {
@@ -10,27 +10,28 @@ const Banner = () => {
         <div>
             <Carousel>
              <Carousel.Item interval={1000}>
-               <img
+               <img style={{height:"475px"}}
                  className="d-block w-100"
                  src={img1}
                  alt="First slide"
     />
              </Carousel.Item>
              <Carousel.Item interval={500}>
-               <img
-                 className="d-block w-100 h-100"
+               <img style={{height:"475px"}}
+                 className="d-block w-100"
                  src={img2}
                  alt="Second slide"
     />
              </Carousel.Item>
              <Carousel.Item>
-               <img
+               <img style={{height:"475px"}}
                  className="d-block w-100"
                  src={img3}
                  alt="Third slide"
     />
              </Carousel.Item>
            </Carousel>
+           <p className="mt-2 text-center"><i><q>When to use iterative development? You should use iterative development only on projects that you want to succeed.</q></i>– Martin Fowler</p>
         </div>
     );
 };

@@ -9,7 +9,7 @@ const UpdateInfo = () => {
         const [singleItem, setSingleItem] = useState([]);
         
          useEffect(()=>{
-             const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems/${updateId}`;
+             const url = `http://localhost:4000/inventoryItems/${updateId}`;
              axios.get(url)
              .then(res => setSingleItem(res.data));
          },[])

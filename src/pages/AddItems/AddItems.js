@@ -18,7 +18,7 @@ const AddItems = () => {
         const value = e.target.value.value;
         e.target.reset();
        // console.log(picture, book_name, author_name, quantity, value)
-       const url = `https://aqueous-plains-79132.herokuapp.com/inventoryItems`;
+       const url = `http://localhost:4000/inventoryItems`;
        axios.post(url, {
            picture,
            book_name,

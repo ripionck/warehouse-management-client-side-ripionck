@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,7 @@ import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Register.css';
 import 'react-toastify/dist/ReactToastify.css';
+import useToken from '../../../hooks/useToken';
 
 
 
@@ -19,7 +20,7 @@ const Register = () => {
         createUserWithEmailAndPassword,
         user,
       ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
-
+      const [token] = useToken(user);
       const handleEmailChange = e =>{
           const email = e.target.value;
           const emailRegex = /^\S+@\S+\.\S+$/;
@@ -61,11 +62,10 @@ const Register = () => {
      const location = useLocation();
      let from = location.state?.from?.pathname || "/";
 
-     useEffect(()=>{
-         if(user){
+     
+         if(token){
              navigate(from, {replace:true});
          }
-     },[user]);
 
     return (
         <div className="container w-50 mx-auto">

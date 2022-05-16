@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import google from '../../../images/google.png';
 import github from '../../../images/github.png';
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../../hooks/useToken';
 
 
 
@@ -11,7 +12,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const SocialLogin = () => {
     const [signInWithGoogle, googleUser,  googleError] = useSignInWithGoogle(auth);
     const [signInWithGithub, githubUser, githubError] = useSignInWithGithub(auth);
-
+    const [token] = useToken(googleUser || githubUser);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -19,12 +20,9 @@ const SocialLogin = () => {
     
     let errorElement;
 
-    useEffect(()=>{
-        const user = googleUser || githubUser;
-        if(user){
-            navigate(from);
-        }
-    },[googleUser, githubUser]);
+    if(token) {
+        navigate(from, {replace: true});
+    }
 
     return (
         <div>

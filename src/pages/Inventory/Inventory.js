@@ -8,7 +8,7 @@ const Inventory = ({reservations}) => {
 
     return (
         <div className='col-lg-4 col-md-6 gy-4'>
-        <div className="card shadow-sm p-3 mb-5 bg-body rounded">
+        <div className="card shadow-sm p-3 mb-4 bg-body rounded">
             <div className="card-body">
                 <img className="img-fluid" src={picture} alt="" />
                 <h4 className="card-title mt-2" style={{fontFamily: "Rockwell"}}>{book_name}</h4>

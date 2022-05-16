@@ -1,10 +1,11 @@
 
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import Banner from '../../Banner/Banner';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
@@ -20,6 +21,7 @@ const Login = () => {
         user,
         error
       ] = useSignInWithEmailAndPassword(auth);
+      const [token] = useToken(user);
        
       const handleEmailChange = e =>{
         const email = e.target.value;
@@ -60,12 +62,10 @@ const Login = () => {
           await signInWithEmailAndPassword(email.value, password.value);
       };
       
-      useEffect(()=>{
-        if(user){
+      
+        if(token){
           navigate(from, {replace: true});
         }
-  
-      },[user])
 
     return (
         <div className="w-50 mx-auto">

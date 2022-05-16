@@ -12,7 +12,7 @@ import prize from '../../images/prize.png';
 
 const Home = () => {
 
-    const reservationsData = useReservations('https://aqueous-plains-79132.herokuapp.com/inventoryItems');
+    const reservationsData = useReservations('http://localhost:4000/inventoryItems');
 
     if(reservationsData[0].length){
           reservationsData[0].length=6;
@@ -27,7 +27,9 @@ const Home = () => {
                   reservationsData[0]?.map(reservations=><Inventory key={reservations.id} reservations={reservations}></Inventory>)
                 }
               </div>
-              <Link to="/inventories">Manage Inventories</Link>
+              <span className="d-flex justify-content-center bg-primary py-1">
+              <Link to="/inventories" className="text-white text-decoration-none" style={{fontFamily: "Rockwell"}}>Manage Inventories</Link>
+              </span>
             </div>
             <div className="container mt-5" style={{borderTop:"2px solid black"}}></div>
             <div className="container mt-5">
@@ -53,7 +55,7 @@ const Home = () => {
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-lg-3 col-sm-12 mb-4">
-                        <img className="img-fluid" src={Kirkus_Review} alt="" srcset="" />
+                        <img className="img-fluid shadow-lg" src={Kirkus_Review} alt="" srcset="" />
                     </div>
                     <div className="col-lg-5 col-sm-12 d-flex align-items-center mb-4" style={{borderRight:"1px solid black"}}>
                             <div>
